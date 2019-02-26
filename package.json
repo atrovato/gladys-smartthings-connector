@@ -1,0 +1,23 @@
+{
+  "name": "gladys-smartthings-connector",
+  "version": "0.0.1",
+  "description": "A cloud-connected device communicates indirectly to SmartThings Cloud.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atrovato/gladys-smartthings-connector.git"
+  },
+  "keywords": [
+    "gladys",
+    "smartthings"
+  ],
+  "author": "Alexandre Trovato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atrovato/gladys-smartthings-connector/issues"
+  },
+  "homepage": "https://github.com/atrovato/gladys-smartthings-connector#readme"
+}
