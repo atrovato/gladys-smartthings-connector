@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/atrovato/gladys-smartthings-connector/issues"
   },
-  "homepage": "https://github.com/atrovato/gladys-smartthings-connector#readme"
+  "homepage": "https://github.com/atrovato/gladys-smartthings-connector#readme",
+  "dependencies": {
+    "http-signature": "^1.2.0"
+  }
 }
