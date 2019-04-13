@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/atrovato/gladys-smartthings-connector#readme",
   "dependencies": {
-    "http-signature": "^1.2.0"
+    "bluebird": "^3.5.4",
+    "http-signature": "^1.2.0",
+    "request-promise": "^4.2.4"
   }
 }

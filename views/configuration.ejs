@@ -1,0 +1,52 @@
+<script src="/hooks/smartthings-connector/js/smartthings.lang.js"></script>
+<script src="/hooks/smartthings-connector/js/smartthings.controller.js"></script>
+
+<div data-ng-controller="SmartthingsController as vm">
+  <div class="box skin-box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">{{ 'SMT_MODULE' | translate }}</h3>
+      <small class="text-muted pull-right"><em>{{ vm.loading | translate }}</em></small>
+    </div>
+    <div class="box-body table-responsive">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingConnect">
+            <p class="panel-title" style="font-size: inherit">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseConnect" aria-expanded="vm.step === 'SMT_CONNECT'" aria-controls="collapseConnect">
+                {{ 'SMT_CONNECT' | translate}}
+              </a>
+            </p>
+          </div>
+          <div id="collapseConnect" class="panel-collapse collapse" ng-class="{ in: vm.step === 'SMT_CONNECT' }" role="tabpanel" aria-labelledby="headingConnect">
+            <div class="panel-body">
+              {{ 'SMT_CONNECT_DESCR' | translate}}
+              <ol>
+                <li style="list-style-type: decimal;"><a href="https://us.account.samsung.com/accounts/v1/STWS/terms#" target="_blank">{{ 'SMT_CONNECT_SUBSCRIBE' | translate }}</a></li>
+                <li style="list-style-type: decimal;"><a href="https://smartthings.developer.samsung.com/workspace/projects/new" target="_blank">{{ 'SMT_CONNECT_WORKSPACE' | translate }}</a></li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NAME' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_REGISTER' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_WEBHOOK' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NEXT' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_SCOPE' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NEXT' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NAME' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_SAVE' | translate }}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_PUBLIC_KEY' | translate }}</li>
+              </ol>
+
+              <form>
+                <div class="form-group">
+                  <label for="publicKey" class="control-label">{{ 'SMT_PUBLIC_KEY' | translate }}</label>
+                  <textarea class="form-control" ng-model='vm.publicKey'></textarea>
+                </div>
+                <div class="form-group text-center">
+                  <button type="button" class="btn btn-success btn-flat" ng-click="vm.savePublicKey()">{{ 'SMT_SAVE' | translate }}</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
