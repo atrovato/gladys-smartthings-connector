@@ -13,12 +13,12 @@ module.exports = {
           .then(() => {
             handleRequest(req, res);
           }).catch((e) => {
-            console.log('SmartThings Connector : ' + e);
+            console.error('SmartThings Connector : ' + e);
             res.status(401).send('Forbidden');
           });
       }
     } else {
-      console.log('SmartThings Connector : Forbidden');
+      console.error('SmartThings Connector : Forbidden');
       res.status(401).send('Forbidden');
     }
   }
