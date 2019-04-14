@@ -16,7 +16,27 @@
 
     vm.publicKey = null;
 
-    loadPublicKey();
+    activate();
+    
+    function activate() {
+
+      io.socket.on('smtHandleReq', function (params) {
+        $scope.$apply(function () {
+          
+          switch (params.step) {
+          case 'PING':
+          case 'CONFIGURATION':
+            vm.loading = 'SMT_REQ_' + params.step + '_' + params.status;
+            break;
+          default:
+            vm.step = null;
+            break;
+          }
+        });
+      });
+
+      loadPublicKey();
+    }
 
     function loadPublicKey() {
       vm.loading = 'SMT_LOAD_PUBLIC_KEY';
@@ -24,9 +44,9 @@
       paramService.getByName('SMT_PUBLIC_KEY')
         .then((param) => {
           vm.publicKey = param.data.value;
-          loadHouses();
+          installApp();
         }).catch(() => {
-          vm.step = 'SMT_CONNECT';
+          vm.step = 'SMT_STEP_CONNECT';
           vm.loading = null;
         });
     }
@@ -44,15 +64,15 @@
       paramService.create(publicKeyParam)
         .then((param) => {
           vm.publicKey = param.data.value;
-          loadHouses();
+          installApp();
         }).catch(() => {
           vm.loading = null;
         });
     }
 
-    function loadHouses() {
-      vm.loading = 'SMT_LOAD_HOUSES';
-      vm.step = 'SMT_CONFIG_HOUSES';
+    function installApp() {
+      vm.step = 'SMT_STEP_INSTALL_APP';
+      vm.loading = null;
     }
   }
 })();

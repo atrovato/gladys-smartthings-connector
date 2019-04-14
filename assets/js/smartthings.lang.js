@@ -1,6 +1,6 @@
 var translationsEN = {
   SMT_MODULE: 'Samsung SmartThing Connector',
-  SMT_CONNECT: 'SmartThings connection',
+  SMT_STEP_CONNECT: 'SmartThings connection',
   SMT_CONNECT_DESCR: 'To connect Gladys to Samsung SmartThings, please following this instructions:',
   SMT_CONNECT_SUBSCRIBE: 'Create a Samsung SmartThings account',
   SMT_CONNECT_WORKSPACE: 'Connect to developer workspace',
@@ -17,12 +17,17 @@ var translationsEN = {
   SMT_SAVE: 'Save',
   SMT_LOAD_PUBLIC_KEY: 'Loading public key...',
   SMT_SAVE_PUBLIC_KEY: 'Saving public key...',
-  SMT_LOAD_HOUSES: 'Loading houses...'
+  SMT_STEP_INSTALL_APP: 'SmartThings App configuration',
+  SMT_INSTALL_APP_DESC: 'Follow instructions on the official website',
+  SMT_REQ_PING_IN_PROGRESS: 'Connection in progress...',
+  SMT_REQ_PING_DONE: 'Connection done',
+  SMT_REQ_CONFIGURATION_IN_PROGRESS: 'App configuration in progress...',
+  SMT_REQ_CONFIGURATION_DONE: 'App configuration done'
 };
 
 var translationsFR = {
   SMT_MODULE: 'Samsung SmartThing Connector',
-  SMT_CONNECT: 'Connexion à SmartThings',
+  SMT_STEP_CONNECT: 'Connexion à SmartThings',
   SMT_CONNECT_DESCR: 'Afin de pouvoir faire communiquer Gladys avec Samsung SmartThings, il est nécessaire de suivre les étapes suivantes :',
   SMT_CONNECT_SUBSCRIBE: 'créer un compte Samsung SmartThings',
   SMT_CONNECT_WORKSPACE: 'se connecter au "Workspace"',
@@ -39,7 +44,12 @@ var translationsFR = {
   SMT_SAVE: 'Enregistrer',
   SMT_LOAD_PUBLIC_KEY: 'Chargement de la clé publique...',
   SMT_SAVE_PUBLIC_KEY: 'Enregistrement de la clé publique...',
-  SMT_LOAD_HOUSES: 'Chargement des domiciles...' 
+  SMT_STEP_INSTALL_APP: 'Configuration de l\'application SmartThings',
+  SMT_INSTALL_APP_DESC: 'Suivre les instructions sur le site officiel',
+  SMT_REQ_PING_IN_PROGRESS: 'Connexion en cours...',
+  SMT_REQ_PING_DONE: 'Connexion terminée',
+  SMT_REQ_CONFIGURATION_IN_PROGRESS: 'Configuration de l\'App en cours...',
+  SMT_REQ_CONFIGURATION_DONE: 'Configuration de l\'App terminée'
 };
 
 angular

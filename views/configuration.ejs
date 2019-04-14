@@ -12,12 +12,12 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingConnect">
             <p class="panel-title" style="font-size: inherit">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseConnect" aria-expanded="vm.step === 'SMT_CONNECT'" aria-controls="collapseConnect">
-                {{ 'SMT_CONNECT' | translate}}
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseConnect" aria-expanded="vm.step === 'SMT_STEP_CONNECT'" aria-controls="collapseConnect">
+                {{ 'SMT_STEP_CONNECT' | translate}}
               </a>
             </p>
           </div>
-          <div id="collapseConnect" class="panel-collapse collapse" ng-class="{ in: vm.step === 'SMT_CONNECT' }" role="tabpanel" aria-labelledby="headingConnect">
+          <div id="collapseConnect" class="panel-collapse collapse" ng-class="{ in: vm.step === 'SMT_STEP_CONNECT' }" role="tabpanel" aria-labelledby="headingConnect">
             <div class="panel-body">
               {{ 'SMT_CONNECT_DESCR' | translate}}
               <ol>
@@ -43,6 +43,21 @@
                   <button type="button" class="btn btn-success btn-flat" ng-click="vm.savePublicKey()">{{ 'SMT_SAVE' | translate }}</button>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingInstallApp">
+            <p class="panel-title" style="font-size: inherit">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseInstallApp" aria-expanded="vm.step === 'SMT_STEP_INSTALL_APP'" aria-controls="collapseInstallApp">
+                {{ 'SMT_STEP_INSTALL_APP' | translate}}
+              </a>
+            </p>
+          </div>
+          <div id="collapseInstallApp" class="panel-collapse collapse" ng-class="{ in: vm.step === 'SMT_STEP_INSTALL_APP' }" role="tabpanel" aria-labelledby="headingInstallApp">
+            <div class="panel-body">
+              <a href="https://smartthings.developer.samsung.com/docs/guides/testing/developer-mode.html" target="_blank">{{ 'SMT_INSTALL_APP_DESC' | translate}}</a>
             </div>
           </div>
         </div>
