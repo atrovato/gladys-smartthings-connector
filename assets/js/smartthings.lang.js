@@ -34,7 +34,7 @@ var translationsFR = {
   SMT_CONNECT_PROJECT_SCOPE: 'sélectionner tous les "Scope"',
   SMT_CONNECT_PROJECT_NAME: 'remplir le champ "Automation Display Name" avec le nom visible de l\'application (ex. Gladys)',
   SMT_CONNECT_PROJECT_SAVE: 'cliquer sur "SAVE" et attendre la connexion',
-  SMT_CONNECT_PROJECT_PUBLIC_KEY: 'copier la "Public Key" et la collet dans le champ ci-suit',
+  SMT_CONNECT_PROJECT_PUBLIC_KEY: 'copier la "Public Key" et la coller dans le champ ci-suit',
   SMT_PUBLIC_KEY: 'Clé publique :',
   SMT_SAVE: 'Enregistrer',
   SMT_LOAD_PUBLIC_KEY: 'Chargement de la clé publique...',
