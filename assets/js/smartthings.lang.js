@@ -21,8 +21,10 @@ var translationsEN = {
   SMT_INSTALL_APP_DESC: 'Follow instructions on the official website',
   SMT_REQ_PING_IN_PROGRESS: 'Connection in progress...',
   SMT_REQ_PING_DONE: 'Connection done',
+  SMT_REQ_PING_FAIL: 'Connection fails',
   SMT_REQ_CONFIGURATION_IN_PROGRESS: 'App configuration in progress...',
-  SMT_REQ_CONFIGURATION_DONE: 'App configuration done'
+  SMT_REQ_CONFIGURATION_DONE: 'App configuration done',
+  SMT_REQ_CONFIGURATION_FAIL: 'App configuration fails'
 };
 
 var translationsFR = {
@@ -48,8 +50,10 @@ var translationsFR = {
   SMT_INSTALL_APP_DESC: 'Suivre les instructions sur le site officiel',
   SMT_REQ_PING_IN_PROGRESS: 'Connexion en cours...',
   SMT_REQ_PING_DONE: 'Connexion terminée',
+  SMT_REQ_PING_FAIL: 'Echec de la connexion',
   SMT_REQ_CONFIGURATION_IN_PROGRESS: 'Configuration de l\'App en cours...',
-  SMT_REQ_CONFIGURATION_DONE: 'Configuration de l\'App terminée'
+  SMT_REQ_CONFIGURATION_DONE: 'Configuration de l\'App terminée',
+  SMT_REQ_CONFIGURATION_FAIL: 'Echec de la configuration de l\'App'
 };
 
 angular
