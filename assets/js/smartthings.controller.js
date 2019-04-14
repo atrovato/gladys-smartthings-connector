@@ -23,7 +23,7 @@
 
       paramService.getByName('SMT_PUBLIC_KEY')
         .then((param) => {
-          vm.publicKey = param.value;
+          vm.publicKey = param.data.value;
           loadHouses();
         }).catch(() => {
           vm.step = 'SMT_CONNECT';
@@ -43,7 +43,7 @@
       };
       paramService.create(publicKeyParam)
         .then((param) => {
-          vm.publicKey = param.value;
+          vm.publicKey = param.data.value;
           loadHouses();
         }).catch(() => {
           vm.loading = null;
