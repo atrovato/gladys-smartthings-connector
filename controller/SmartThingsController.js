@@ -13,16 +13,22 @@ module.exports = {
           if (req.body.lifecycle === 'PING') {
             return Promise.resolve();
           } else {
-            return verifySignature(req);
+            return verifySignature(req)
+              .catch((e) => {
+                return Promose.reject({ errorCode: 401, message: 'Forbidden', cause: e });
+              });
           }
         } else {
           return Promise.reject('Request body is missing');
         }
       }).then(() => {
-        return handleRequest(req, res);
+        return handleRequest(req);
+      }).then((response) => {
+        response.statusCode = response.statusCode || 200;
+        res.json(response);
       }).catch((e) => {
-        console.error('SmartThings Connector : ' + e);
-        res.status(401).send('Forbidden');
+        res.status(e.errorCode || 500).send(e.message || 'Error');
+        console.error('SmartThings Connector : ' + (e.cause || e));
       });
   }
 };
