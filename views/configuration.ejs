@@ -1,5 +1,6 @@
 <script src="/hooks/smartthings-connector/js/smartthings.lang.js"></script>
 <script src="/hooks/smartthings-connector/js/smartthings.controller.js"></script>
+<script src="/hooks/smartthings-connector/js/smartthings.service.js"></script>
 
 <div data-ng-controller="SmartthingsController as vm">
   <div class="box skin-box box-primary">
@@ -21,46 +22,29 @@
             <div class="panel-body">
               {{ 'SMT_CONNECT_DESCR' | translate}}
               <ol>
-                <li style="list-style-type: decimal;"><a href="https://us.account.samsung.com/accounts/v1/STWS/terms#" target="_blank">{{ 'SMT_CONNECT_SUBSCRIBE' | translate }}</a></li>
-                <li style="list-style-type: decimal;"><a href="https://smartthings.developer.samsung.com/workspace/projects/new" target="_blank">{{ 'SMT_CONNECT_WORKSPACE' | translate }}</a></li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NAME' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_REGISTER' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_WEBHOOK' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NEXT' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_SCOPE' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NEXT' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_NAME' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_SAVE' | translate }}</li>
-                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_PROJECT_PUBLIC_KEY' | translate }}</li>
+                <li style="list-style-type: decimal;"><a href="https://account.smartthings.com/tokens" target="_blank">{{ 'SMT_CONNECT_CREATE_TOKEN' | translate }}</a></li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_SELECT_TOKEN' | translate}}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_CHECK_TOKEN' | translate}}</li>
+                <li style="list-style-type: decimal;">{{ 'SMT_CONNECT_COPY_TOKEN' | translate}}</li>
               </ol>
 
               <form>
                 <div class="form-group">
-                  <label for="publicKey" class="control-label">{{ 'SMT_PUBLIC_KEY' | translate }}</label>
-                  <textarea class="form-control" ng-model='vm.publicKey' rows="5"></textarea>
+                  <label for="authToken" class="control-label">{{ 'SMT_CONNECT_AUTH_TOKEN' | translate }}</label>
+                  <input name="authToken" type="text" class="form-control" ng-model="vm.authToken"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="targetUrl" class="control-label">{{ 'SMT_CONNECT_TARGET_URL' | translate }}</label>
+                  <input name="targetUrl" type="text" class="form-control" ng-model="vm.targetUrl"></textarea>
                 </div>
                 <div class="form-group text-center">
-                  <button type="button" class="btn btn-success btn-flat" ng-click="vm.savePublicKey()">{{ 'SMT_SAVE' | translate }}</button>
+                  <button type="button" class="btn btn-success btn-flat" ng-click="vm.installApp()">{{ 'SMT_SAVE' | translate }}</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingInstallApp">
-            <p class="panel-title" style="font-size: inherit">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseInstallApp" aria-expanded="vm.step === 'SMT_STEP_INSTALL_APP'" aria-controls="collapseInstallApp">
-                {{ 'SMT_STEP_INSTALL_APP' | translate}}
-              </a>
-            </p>
-          </div>
-          <div id="collapseInstallApp" class="panel-collapse collapse" ng-class="{ in: vm.step === 'SMT_STEP_INSTALL_APP' }" role="tabpanel" aria-labelledby="headingInstallApp">
-            <div class="panel-body">
-              <a href="https://smartthings.developer.samsung.com/docs/guides/testing/developer-mode.html" target="_blank">{{ 'SMT_INSTALL_APP_DESC' | translate}}</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
