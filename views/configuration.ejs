@@ -31,20 +31,130 @@
               <form>
                 <div class="form-group">
                   <label for="authToken" class="control-label">{{ 'SMT_CONNECT_AUTH_TOKEN' | translate }}</label>
-                  <input name="authToken" type="text" class="form-control" ng-model="vm.authToken"></textarea>
+                  <input name="authToken" type="text" class="form-control" ng-model="vm.authToken" ng-disabled="vm.progress"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="targetUrl" class="control-label">{{ 'SMT_CONNECT_TARGET_URL' | translate }}</label>
-                  <input name="targetUrl" type="text" class="form-control" ng-model="vm.targetUrl"></textarea>
+                  <input name="targetUrl" type="text" class="form-control" ng-model="vm.targetUrl" ng-disabled="vm.progress"></textarea>
                 </div>
                 <div class="form-group text-center">
-                  <button type="button" class="btn btn-success btn-flat" ng-click="vm.installApp()">{{ 'SMT_SAVE' | translate }}</button>
+                  <button type="submit" class="btn btn-success btn-flat" ng-click="vm.installApp()" ng-disabled="vm.progress">{{ 'SMT_SAVE' | translate }}</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
 
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headerLocations">
+            <p class="panel-title" style="font-size: inherit">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseLocations" aria-expanded="vm.step === 'SMT_STEP_LOCATIONS'" aria-controls="collapseLocations">
+                {{ 'SMT_STEP_LOCATIONS' | translate}}
+              </a>
+            </p>
+          </div>
+          <div id="collapseLocations" class="panel-collapse collapse" ng-class="{ in: vm.step === 'SMT_STEP_LOCATIONS' }" role="tabpanel" aria-labelledby="headerLocations">
+            <div class="panel-body">
+              {{ 'SMT_LOCATIONS_DESCR' | translate }}
+              <hr />
+              <form>
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <b>{{ 'SMT_GLADYS_HOUSES' | translate }}</b>
+                  </div>
+                  <div class="col-sm-8">
+                    <b>{{ 'SMT_LOCATIONS' | translate }}</b>
+                  </div>
+                </div>
+                <div ng-repeat="house in vm.houses" class="form-group row">
+                  <label for="house_{{ house.id }}" class="col-sm-4 control-label">{{ house.name }}</label>
+                  <div class="col-sm-8">
+                    <select name="house_{{ house.id }}" ng-model="house.locationId" ng-options="location.locationId as location.name for location in vm.locations" 
+                      ng-change="vm.changeLocation(house)" class="form-control" required ng-disabled="vm.progress"></select>
+                  </div>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-success btn-flat" ng-click="vm.saveLocations()" ng-disabled="vm.progress">{{ 'SMT_SAVE' | translate }}</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="modalSmt" class="modal fade mesh-modal" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true" visible="vm.locationModal">
+          <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="vm.cancelLocationCreation()">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myLargeModalLabel">{{ 'SMT_LOCATIONS_CREATE' | translate }}</h4>
+              </div>
+              <div class="modal-body">
+                <div class="alert alert-danger" role="alert" ng-hide="!vm.error">
+                    {{ vm.error }}
+                </div>
+
+                <form>
+                  <div class="form-group row">
+                    <label for="locationName" class="col-sm-3 control-label">{{ 'SMT_LOCATIONS_CREATE_NAME' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input type="text" placeholder="{{ 'SMT_LOCATIONS_CREATE_NAME' | translate }}"
+                      class="form-control" ng-model="vm.locationCreation.name"
+                      ng-model-options='{ debounce: 500 }' id="locationName" ng-disabled="vm.progress" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="locationCountryCode" class="col-sm-3 control-label">{{ 'SMT_LOCATIONS_CREATE_COUNTRY_CODE' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input type="text" placeholder="{{ 'SMT_LOCATIONS_CREATE_COUNTRY_CODE' | translate }}"
+                      class="form-control" ng-model="vm.locationCreation.countryCode"
+                      ng-model-options='{ debounce: 500 }' id="locationCountryCode" ng-disabled="vm.progress" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="locationLatitude" class="col-sm-3 control-label">{{ 'SMT_LOCATIONS_CREATE_LATITUDE' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input type="text" placeholder="{{ 'SMT_LOCATIONS_CREATE_LATITUDE' | translate }}"
+                      class="form-control" ng-model="vm.locationCreation.latitude"
+                      ng-model-options='{ debounce: 500 }' id="locationLatitude" ng-disabled="vm.progress" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="locationLongitude" class="col-sm-3 control-label">{{ 'SMT_LOCATIONS_CREATE_LONGITUDE' | translate }}</label>
+                    <div class="col-sm-9">
+                      <input type="text" placeholder="{{ 'SMT_LOCATIONS_CREATE_LONGITUDE' | translate }}"
+                      class="form-control" ng-model="vm.locationCreation.longitude"
+                      ng-model-options='{ debounce: 500 }' id="locationLongitude" ng-disabled="vm.progress" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="locationTemperature" class="col-sm-3 control-label">{{ 'SMT_LOCATIONS_CREATE_TEMP' | translate }}</label>
+                    <div class="col-sm-9">
+                      <select id="locationTemperature" ng-model="vm.locationCreation.temperatureScale" ng-disabled="vm.progress" class="form-control">
+                        <option value="C">Celcius</option>
+                        <option value="F">Fahrenheit</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-4 col-sm-offset-8">
+                      <button class="btn btn-flat btn-success"
+                          ng-click="vm.createLocation();"
+                          ng-disabled="vm.progress"><%= __('Create') %></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

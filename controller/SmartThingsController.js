@@ -3,6 +3,9 @@ const Promise = require('bluebird');
 const installApp = require('../lib/sync/app.js');
 const loadConfiguration = require('../lib/sync/loadConfiguration.js');
 const saveConfiguration = require('../lib/sync/saveConfiguration.js');
+const loadLocations = require('../lib/sync/loadLocations.js');
+const createLocation = require('../lib/sync/createLocation.js');
+const saveLocations = require('../lib/sync/saveLocations.js');
 
 const verifySignature = require('../lib/verifySignature.js');
 const handleRequest = require('../lib/handleRequest.js');
@@ -18,10 +21,29 @@ module.exports = {
     return saveConfiguration(req.body)
       .then(() => {
         return installApp(req.body);
-      }).finally(() => {
-        res.status(200);
+      }).then(() => {
+        res.ok();
       });
   },
+  loadLocations: (req, res, next) => {
+    return loadLocations()
+      .then((data) => {
+        res.json(data);
+      });
+  },
+  createLocation: (req, res, next) => {
+    return createLocation(req.body)
+      .then((data) => {
+        res.json(data);
+      });
+  },
+  saveLocations: (req, res, next) => {
+    return saveLocations(req.body.houses, req.body.moduleId)
+      .then((data) => {
+        res.json(data);
+      });
+  },
+
   webhook: function (req, res, next) {
     // We don't yet have the public key during PING (when the app is created),
     // so no need to verify the signature. All other requests are verified.
