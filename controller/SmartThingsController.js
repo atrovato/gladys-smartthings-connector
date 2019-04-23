@@ -6,7 +6,6 @@ const saveConfiguration = require('../lib/sync/saveConfiguration.js');
 const loadLocations = require('../lib/sync/loadLocations.js');
 const createLocation = require('../lib/sync/createLocation.js');
 const saveLocations = require('../lib/sync/saveLocations.js');
-const createProfiles = require('../lib/sync/createProfiles.js/index.js');
 
 const verifySignature = require('../lib/verifySignature.js');
 const handleRequest = require('../lib/handleRequest.js');
@@ -42,12 +41,6 @@ module.exports = {
     return saveLocations(req.body.houses, req.body.moduleId)
       .then((data) => {
         res.json(data);
-      });
-  },
-  syncProfiles: (req, res, next) => {
-    return createProfiles()
-      .then(() => {
-        res.ok();
       });
   },
 
