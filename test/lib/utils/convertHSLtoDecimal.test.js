@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 
-const convertHSL = require('../../../lib/utils/convertHSL.js');
+const convertHSL = require('../../../lib/utils/convertHSLtoDecimal.js');
 
 describe('SmartThings utilities : convert HSL', function () {
 
