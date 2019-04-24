@@ -4,7 +4,7 @@
   "description": "A cloud-connected device communicates indirectly to SmartThings Cloud.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/_mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,10 @@
     "bluebird": "^3.5.4",
     "http-signature": "^1.2.0",
     "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0"
   }
 }
