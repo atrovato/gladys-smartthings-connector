@@ -1,6 +1,9 @@
 const SmartThingsController = require('./controller/SmartThingsController.js');
+const handleCommand = require('./lib/sync/command/handleCommand.js');
 
 module.exports = function (sails) {
+  handleCommand();
+
   return {
     routes: {
       before: {
